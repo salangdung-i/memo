@@ -1,12 +1,13 @@
 'use strict'
 
+const items = document.querySelector('.items');
 const input = document.querySelector('.footer__text');
 const form = document.querySelector('.new-form');
-const items = document.querySelector('.items');
+
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  addText()
+  addText();
 });
 
 function addText() {
@@ -32,12 +33,11 @@ function createItem(text) {
   itemRow.innerHTML = `
         <div class="item">
           <span class="item__name">${text}</span>
-          <button class="item__delete">
-            <i class="fas fa-trash-alt" data-target-id=${id} ></i >
+          <button class="item__delete" data-target-id=${id}>
+            <i class="fas fa-trash-alt" data-target-id=${id}></i>
           </button >
-        </div >
-    <div class="item__divider"></div>
-  `;
+        </div>
+    <div class="item__divider"></div>`;
 
   id++;
   return itemRow;
@@ -46,7 +46,7 @@ function createItem(text) {
 items.addEventListener('click', event => {
   const id = event.target.dataset.targetId;
   if (id) {
-    const toBeDelete = document.querySelector(`.item__row[data-id="${id}"]`);
-    toBeDelete.remove();
+    const toBeDeleted = document.querySelector(`.item__row[data-id="${id}"]`);
+    toBeDeleted.remove();
   }
 });
